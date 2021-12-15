@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.mapper.RequirementTableMapper">
+  <resultMap id="BaseResultMap" type="com.alibaba.bean.RequirementTable">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="promoter_id" jdbcType="INTEGER" property="promoterId" />
+    <result column="activity_des" jdbcType="VARCHAR" property="activityDes" />
+    <result column="activity_image" jdbcType="VARCHAR" property="activityImage" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, activity_name, promoter_id, activity_des, activity_image, comment, release_time, 
+    update_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from requirement_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="com.alibaba.bean.RequirementTable">
+    select * from requirement_table
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from requirement_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.alibaba.bean.RequirementTable">
+    insert into requirement_table (id, activity_name, promoter_id, 
+      activity_des, activity_image, comment, 
+      release_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, #{promoterId,jdbcType=INTEGER}, 
+      #{activityDes,jdbcType=VARCHAR}, #{activityImage,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
+      #{releaseTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alibaba.bean.RequirementTable">
+    insert into requirement_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="activityName != null">
+        activity_name,
+      </if>
+      <if test="promoterId != null">
+        promoter_id,
+      </if>
+      <if test="activityDes != null">
+        activity_des,
+      </if>
+      <if test="activityImage != null">
+        activity_image,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="releaseTime != null">
+        release_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityName != null">
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="promoterId != null">
+        #{promoterId,jdbcType=INTEGER},
+      </if>
+      <if test="activityDes != null">
+        #{activityDes,jdbcType=VARCHAR},
+      </if>
+      <if test="activityImage != null">
+        #{activityImage,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseTime != null">
+        #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.alibaba.bean.RequirementTable">
+    update requirement_table
+    <set>
+      <if test="activityName != null">
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="promoterId != null">
+        promoter_id = #{promoterId,jdbcType=INTEGER},
+      </if>
+      <if test="activityDes != null">
+        activity_des = #{activityDes,jdbcType=VARCHAR},
+      </if>
+      <if test="activityImage != null">
+        activity_image = #{activityImage,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alibaba.bean.RequirementTable">
+    update requirement_table
+    set activity_name = #{activityName,jdbcType=VARCHAR},
+      promoter_id = #{promoterId,jdbcType=INTEGER},
+      activity_des = #{activityDes,jdbcType=VARCHAR},
+      activity_image = #{activityImage,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

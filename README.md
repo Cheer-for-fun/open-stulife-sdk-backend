@@ -5,7 +5,7 @@
 > 如题所示，此项目为一个 对 BBSer, ecnuer and scuter免费开放的开源项目，目前聚焦于解决大学生学习生活中的各种各种困难，未来的发展方向是做一整套学生生活、学习与创业等各项服务的SDK，发展设想在[Future-development](https://github.com/ModestYjx/open-stulife-sdk#3-future-development)，功能介绍在[Features](https://github.com/ModestYjx/open-stulife-sdk#2-feature)
 。
 
-> github：https://github.com/Cheer-for-fun/open-stulife-sdk-backend
+> github：https://github.com/Cheer-for-fun/open-stulife-sdk-backending
 
 > 体验网址：http://39.103.166.167/
 

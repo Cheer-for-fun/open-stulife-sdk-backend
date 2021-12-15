@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.mapper.VisitDataMapper">
+    <resultMap id="BaseResultMap" type="com.alibaba.bean.VisitedData">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="visited_count" jdbcType="VARCHAR" property="visitedCount" />
+    </resultMap>
+    <select id="selectAll" resultType="com.alibaba.bean.VisitedData">
+        select id,visited_count from visited_data_table
+    </select>
+
+</mapper>

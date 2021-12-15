@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.mapper.DownloadMapper">
+  <resultMap id="BaseResultMap" type="com.alibaba.bean.CsdnDownload">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="submit_time" jdbcType="VARCHAR" property="submit_time" />
+  </resultMap>
+
+    <insert id="download" parameterType="com.alibaba.bean.CsdnDownload">
+        insert into csdn_download_table(address, email, submit_time)
+        values(#{download.address},#{download.email},#{download.submit_time})
+    </insert>
+
+</mapper>

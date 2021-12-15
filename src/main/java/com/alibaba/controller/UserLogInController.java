@@ -6,7 +6,6 @@ import com.alibaba.service.impl.UserLogServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +33,7 @@ public class UserLogInController {
 
     @ApiOperation(value = "发送邮箱验证码")
     @GetMapping(value = "/sendMail")
-    public Result sendMail(@ApiParam(name = "mail", value = "发送人邮箱") @RequestParam String mail) throws EmailException {
+    public Result sendMail(@ApiParam(name = "mail", value = "发送人邮箱") @RequestParam String mail){
         return userLogService.mailSend(mail);
     }
 

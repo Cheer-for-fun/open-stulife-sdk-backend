@@ -4,8 +4,9 @@ import com.alibaba.bean.Result;
 import com.alibaba.bean.UserBodyTable;
 import com.alibaba.mapper.UserBodyTableMapper;
 import com.alibaba.service.SaltPassward;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,6 +27,10 @@ import java.util.Random;
 
 @Service
 public class UserLogServiceImpl {
+
+    @Autowired
+    private JavaMailSender javaMailSender;
+
 
     @Resource
     private UserBodyTableMapper userBodyTableMapper;
@@ -112,44 +117,31 @@ public class UserLogServiceImpl {
      *
      * @param mail 收件人邮箱
      */
-    public Result mailSend(String mail) throws EmailException {
-
-        //设置邮件的内容
-        HtmlEmail email = new HtmlEmail();
-
-        //创建一个HtmlEmail实例对象
-        email.setHostName("smtp.163.com");
-
-        //设置发送的字符类型
-        email.setCharset("utf-8");
-
-        //设置收件人
-        email.addTo(mail);
-        email.setFrom("yyzpku@163.com","bbser");
-        email.setAuthentication("yyzpku@163.com","");
-
-        //设置发送主题
-        email.setSubject("bbs vertify");
+    public Result mailSend(String mail){
 
         //生成一个随机数字
         Random random = new Random();
         int a = random.nextInt(900000)+100000;
         String pass = String.valueOf(a);
 
-        //设置发送内容
-        email.setMsg(pass);
 
         //进行发送,并包装result结果
-        try {
-            email.send();
-            result.setMsg("短信验证码发送成功！");
-            result.setSuccess(true);
-            result.setDetail(null);
-        } catch (EmailException e) {
-            result.setMsg(e.getMessage());
-            result.setSuccess(false);
-            result.setDetail(null);
-        }
+        javaMailSender.send(new SimpleMailMessage() {{
+            //收件人
+            setTo("1033561535@qq.com");
+
+            //发件人
+            setFrom("yyzpku@163.com");
+
+            //发送主题
+            setSubject("bbser验证码");
+
+            //发送内容
+            setText("您的验证码为："+pass);
+        }});
+        result.setMsg("短信验证码发送成功！");
+        result.setSuccess(true);
+        result.setDetail(null);
         return result;
     }
 

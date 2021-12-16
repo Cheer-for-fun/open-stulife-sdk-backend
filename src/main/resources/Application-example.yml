@@ -1,0 +1,42 @@
+# server:
+#   port: 8080
+#   servlet:
+#     context-path: 
+# spring:
+#   thymeleaf:
+#     prefix:
+#       classpath: /templates   # 访问template下的html文件需要配置模板，映射
+#     cache: false # 开发时关闭缓存,不然没法看到实时页面
+#   datasource:
+#     driver-class-name: com.mysql.jdbc.Driver
+#     url: jdbc:mysql://ip地址:端口号/openstuLifeSDK?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#     username:
+#     password: 
+#   resources:
+#     static-locations: classpath:/templates  #访问静态页面
+#   mail: #发送验证码的邮箱
+#     host: smtp.163.com
+#     username: 
+#     password: 
+#     #SMTP服务器验证
+#     properties:
+#       mail:
+#         smtp:
+#           #需要请求认证
+#           auth: false
+#           starttls:
+#             #开启SSL安全连接(有的邮箱不需要,QQ邮箱需要,不需要时改为false)
+#             enable: false
+#             required: true
+#     default-encoding: UTF-8
+#   jpa:
+#     #在建表的时候，将默认的存储引擎切换为 InnoDB
+#     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#     # 配置在日志中打印出执行的 SQL 语句信息。
+#     show-sql: true
+# #    # 配置指明在程序启动的时候要删除并且创建实体类对应的表。
+# #    hibernate:
+# #      ddl-auto: create #update
+# mybatis:
+#   type-aliases-package: com.alibaba.bean
+#   mapper-locations: classpath:mapperxml/*.xml

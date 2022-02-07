@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/download")
+@RequestMapping("")
 @Api(tags = "Download 业务")
 public class DownloadController {
 

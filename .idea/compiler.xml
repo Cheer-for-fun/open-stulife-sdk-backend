@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="open-stulife-sdk-backending" />
+        <module name="open-stulife-sdk-backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="open-stulife-sdk-backend" target="1.8" />
       <module name="open-stulife-sdk-backending" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="open-stulife-sdk-backend" options="-parameters" />
       <module name="open-stulife-sdk-backending" options="-parameters" />
     </option>
   </component>

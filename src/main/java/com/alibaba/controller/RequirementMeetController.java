@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/required")
+@RequestMapping("/open-stulife-sdk/api/required")
 @Api(tags = "RequirementMeet 业务")
 public class RequirementMeetController {
     @Autowired

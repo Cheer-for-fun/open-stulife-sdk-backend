@@ -24,6 +24,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 @RestController
+@RequestMapping("/open-stulife-sdk/api")
 @Api(tags = "用户登录 注册")
 public class UserLogInController {
 

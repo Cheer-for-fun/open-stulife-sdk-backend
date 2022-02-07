@@ -7,12 +7,15 @@ package com.alibaba.controller;
  */
 
 import com.alibaba.service.VisitedDataService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-
-@Controller
+@RestController
+@RequestMapping("/open-stulife-sdk/api")
+@Api(tags = "访客信息")
 public class VisitedDataController {
     @Autowired
     private VisitedDataService visitedDataService;

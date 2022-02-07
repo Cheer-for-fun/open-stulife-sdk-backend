@@ -1,5 +1,5 @@
 # server:
-#   port: 
+#   port: 8080
 #   servlet:
 #     context-path: 
 # spring:
@@ -11,6 +11,7 @@
 #     driver-class-name: com.mysql.jdbc.Driver
 #     url: jdbc:mysql://ip地址:端口号/openstuLifeSDK?useUnicode=true&characterEncoding=utf-8&useSSL=false
 #     username: 
+#     username:
 #     password: 
 #   resources:
 #     static-locations: classpath:/templates  #访问静态页面
